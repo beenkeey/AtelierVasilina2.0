@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #faf6f0;
+  --cream-deep: #f0e8dc;
+  --espresso: #2c1810;
+  --rose: #c97b6d;
+  --rose-light: #e8b4a8;
+  --sage: #8a9a7b;
+  --gold: #c4a574;
+  --background: var(--cream);
+  --foreground: var(--espresso);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-espresso: var(--espresso);
+  --color-rose: var(--rose);
+  --color-rose-light: var(--rose-light);
+  --color-sage: var(--sage);
+  --color-gold: var(--gold);
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-outfit);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--rose) 35%, white);
+}
+
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.product-stage {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 100%, color-mix(in srgb, var(--rose-light) 45%, transparent), transparent),
+    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--cream-deep) 80%, white) 100%);
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-y 6.5s ease-in-out 1s infinite;
+}
