@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VoiceOfSilencE — выбор стиля</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Outfit, system-ui, sans-serif;
+        background: #0c0c0d;
+        color: #eee;
+        padding: 24px 16px 48px;
+      }
+      h1 {
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.25rem;
+        margin: 0 0 8px;
+      }
+      p.lead {
+        text-align: center;
+        color: #999;
+        font-size: 0.9rem;
+        max-width: 520px;
+        margin: 0 auto 28px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .card-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .label {
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #888;
+        text-align: center;
+      }
+      .label strong {
+        display: block;
+        font-size: 1rem;
+        letter-spacing: 0.04em;
+        text-transform: none;
+        color: #ddd;
+        margin-top: 4px;
+      }
+      .mock {
+        border-radius: 16px;
+        overflow: hidden;
+        border: 2px solid #333;
+        aspect-ratio: 9/16;
+        max-height: 520px;
+        display: flex;
+        flex-direction: column;
+        font-size: 11px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      }
+      .mock nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 14px;
+        font-size: 10px;
+      }
+      .mock .logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .mock .hero {
+        padding: 16px 14px 12px;
+        flex: 0 0 auto;
+      }
+      .mock .tag {
+        font-size: 8px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        opacity: 0.85;
+      }
+      .mock h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        line-height: 1.05;
+        margin: 0 0 8px;
+        font-weight: 600;
+      }
+      .mock .sub {
+        font-size: 9px;
+        line-height: 1.45;
+        opacity: 0.75;
+        margin-bottom: 12px;
+      }
+      .mock .btns {
+        display: flex;
+        gap: 6px;
+      }
+      .mock .btn {
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 8px;
+        font-weight: 500;
+      }
+      .mock .btn-outline {
+        background: transparent;
+        border: 1px solid currentColor;
+        opacity: 0.7;
+      }
+      .mock .tiles {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 0 14px 14px;
+        flex: 1;
+      }
+      .mock .tile {
+        border-radius: 10px;
+        min-height: 72px;
+        position: relative;
+        overflow: hidden;
+      }
+      .mock .tile::after {
+        content: "работа";
+        position: absolute;
+        bottom: 6px;
+        left: 8px;
+        font-size: 7px;
+        opacity: 0.6;
+      }
+      .mock .tile-img {
+        width: 100%;
+        height: 100%;
+        min-height: 72px;
+        object-fit: contain;
+        padding: 6px;
+      }
+
+      /* A — светлая галерея */
+      .v-a {
+        background: #f7f4ef;
+        color: #2a2420;
+      }
+      .v-a nav {
+        border-bottom: 1px solid #e8e2d9;
+      }
+      .v-a .logo span {
+        color: #8b4a52;
+      }
+      .v-a .tag {
+        color: #8b4a52;
+      }
+      .v-a h2 span {
+        color: #8b4a52;
+        font-style: italic;
+      }
+      .v-a .btn-primary {
+        background: #2a2420;
+        color: #f7f4ef;
+      }
+      .v-a .tile {
+        background: #fff;
+        border: 1px solid #e8e2d9;
+      }
+
+      /* B — тёмный минимализм */
+      .v-b {
+        background: #0a0a0a;
+        color: #f0f0f0;
+      }
+      .v-b nav {
+        border-bottom: 1px solid #222;
+      }
+      .v-b .logo {
+        color: #fff;
+      }
+      .v-b .tag {
+        color: #888;
+      }
+      .v-b h2 {
+        font-weight: 500;
+        letter-spacing: -0.02em;
+      }
+      .v-b .btn-primary {
+        background: #fff;
+        color: #0a0a0a;
+      }
+      .v-b .tile {
+        background: #141414;
+        border: 1px solid #262626;
+      }
+
+      /* C — тёмный вино (аккуратная сетка) */
+      .v-c {
+        background: #0d0a0c;
+        color: #f3eef1;
+      }
+      .v-c nav {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .v-c .logo span {
+        color: #c23d5a;
+      }
+      .v-c .tag {
+        color: #c23d5a;
+      }
+      .v-c h2 span {
+        color: #c23d5a;
+        font-style: italic;
+      }
+      .v-c .btn-primary {
+        background: #7a2038;
+        color: #fff;
+      }
+      .v-c .tile {
+        background: linear-gradient(165deg, #1a1619, #121014);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      /* D — тёплый craft / бумага */
+      .v-d {
+        background: #ebe4d8;
+        color: #3d342c;
+      }
+      .v-d nav {
+        border-bottom: 1px solid #d5cbb8;
+      }
+      .v-d .logo span {
+        color: #6b5344;
+      }
+      .v-d .tag {
+        color: #6b5344;
+      }
+      .v-d h2 span {
+        color: #6b5344;
+        font-style: italic;
+      }
+      .v-d .btn-primary {
+        background: #6b5344;
+        color: #ebe4d8;
+      }
+      .v-d .tile {
+        background: #f5f0e8;
+        border: 1px solid #d5cbb8;
+        box-shadow: 0 4px 12px rgba(61, 52, 44, 0.08);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Какой стиль ближе?</h1>
+    <p class="lead">
+      Покажи Василине — пусть скажет букву <strong>A, B, C или D</strong> (можно две через запятую).
+    </p>
+    <div class="grid">
+      <div class="card-wrap">
+        <div class="label">Вариант <strong>A — светлая галерея</strong></div>
+        <div class="mock v-a">
+          <nav>
+            <div class="logo"><span>VoiceOfSilencE</span></div>
+            <div>Заказать</div>
+          </nav>
+          <div class="hero">
+            <div class="tag">Картины · Одежда</div>
+            <h2><span>VoiceOfSilencE</span></h2>
+            <p class="sub">Спокойно, светло, как в белой галерее.</p>
+            <div class="btns">
+              <span class="btn btn-primary">Витрина</span>
+              <span class="btn btn-outline">Telegram</span>
+            </div>
+          </div>
+          <div class="tiles">
+            <div class="tile"><img class="tile-img" src="works/futbolka-osminog-slukhi.jpg" alt="" /></div>
+            <div class="tile"><img class="tile-img" src="works/kartina-vyzhivalschik.jpg" alt="" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-wrap">
+        <div class="label">Вариант <strong>B — чёрный минимализм</strong></div>
+        <div class="mock v-b">
+          <nav>
+            <div class="logo">VoiceOfSilencE</div>
+            <div>Контакт</div>
+          </nav>
+          <div class="hero">
+            <div class="tag">Portfolio</div>
+            <h2>VoiceOfSilencE</h2>
+            <p class="sub">Строго, без цветных акцентов — только работы.</p>
+            <div class="btns">
+              <span class="btn btn-primary">Смотреть</span>
+              <span class="btn btn-outline">Написать</span>
+            </div>
+          </div>
+          <div class="tiles">
+            <div class="tile"><img class="tile-img" src="works/vyshivka-lyubov.jpg" alt="" /></div>
+            <div class="tile"><img class="tile-img" src="works/futbolka-abyuzer.png" alt="" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-wrap">
+        <div class="label">Вариант <strong>C — тёмный, вино (сетка)</strong></div>
+        <div class="mock v-c">
+          <nav>
+            <div class="logo"><span>VoiceOfSilencE</span></div>
+            <div>Связаться</div>
+          </nav>
+          <div class="hero">
+            <div class="tag">Ручная работа</div>
+            <h2><span>VoiceOfSilencE</span></h2>
+            <p class="sub">Как сейчас, но ровная сетка без «хаоса».</p>
+            <div class="btns">
+              <span class="btn btn-primary">Витрина</span>
+              <span class="btn btn-outline">Заказ</span>
+            </div>
+          </div>
+          <div class="tiles">
+            <div class="tile"><img class="tile-img" src="works/tolstovka-koty-future.jpg" alt="" /></div>
+            <div class="tile"><img class="tile-img" src="works/vyshivka-derevo-zhizn.jpg" alt="" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-wrap">
+        <div class="label">Вариант <strong>D — тёплый craft</strong></div>
+        <div class="mock v-d">
+          <nav>
+            <div class="logo"><span>VoiceOfSilencE</span></div>
+            <div>Заказ</div>
+          </nav>
+          <div class="hero">
+            <div class="tag">Мастерская</div>
+            <h2><span>VoiceOfSilencE</span></h2>
+            <p class="sub">Бумага, кraft, уют — ближе к рукоделию.</p>
+            <div class="btns">
+              <span class="btn btn-primary">Работы</span>
+              <span class="btn btn-outline">Telegram</span>
+            </div>
+          </div>
+          <div class="tiles">
+            <div class="tile"><img class="tile-img" src="works/kartina-redflags-prazdnik.jpg" alt="" /></div>
+            <div class="tile"><img class="tile-img" src="works/tolstovka-marina-carica.jpg" alt="" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
