@@ -1,32 +1,15 @@
 import type { NextConfig } from "next";
 
-const apiUrl = process.env.API_URL ?? "http://127.0.0.1:8000";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {
+  output: "export",
+  basePath: basePath || undefined,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
   images: {
-    remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "127.0.0.1",
-        port: "8000",
-        pathname: "/api/images/**",
-      },
-      {
-        protocol: "http",
-        hostname: "localhost",
-        port: "8000",
-        pathname: "/api/images/**",
-      },
-    ],
+    unoptimized: true,
   },
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: `${apiUrl}/api/:path*`,
-      },
-    ];
-  },
+  trailingSlash: true,
 };
 
 export default nextConfig;

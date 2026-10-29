@@ -13,7 +13,7 @@ from schemas import OrderCreate, OrderOut, WorkCreate, WorkOut, WorkUpdate
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Vasilina Atelier API", version="1.0.0")
+app = FastAPI(title="VoiceOfSilencE API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,

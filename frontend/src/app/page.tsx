@@ -4,29 +4,27 @@ import { Gallery } from "@/components/Gallery";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { OrderSection } from "@/components/OrderSection";
-import { fetchWorks } from "@/lib/api";
+import { basePath } from "@/lib/config";
+import { catalog } from "@/lib/site-data";
 
-export default async function HomePage() {
-  let works: Awaited<ReturnType<typeof fetchWorks>> = [];
-
-    try {
-      works = await fetchWorks();
-      console.log("Работы загружены:", works);
-    } catch (error) {
-      console.error("Ошибка загрузки работ:", error);
-    }
-
-  const featured = works.filter((w) => w.featured);
-  const heroItems = featured.length > 0 ? featured : works;
+export default function HomePage() {
+  const works = catalog.works;
+  const featured = works.filter((w) => w.featured && w.available);
+  const heroItems = featured.length > 0 ? featured : works.filter((w) => w.available);
 
   return (
-    <main className="min-h-screen">
-      <Header />
-      <Hero featured={heroItems} />
-      <Gallery works={works} />
-      <AboutSection />
+    <main className="min-h-screen bg-background">
+      <Header siteName={catalog.site.name} />
+      <Hero
+        siteName={catalog.site.name}
+        featured={heroItems}
+        tagline={catalog.site.tagline}
+        basePath={basePath}
+      />
+      <Gallery works={works} basePath={basePath} />
+      <AboutSection siteName={catalog.site.name} />
       <OrderSection />
-      <Footer />
+      <Footer siteName={catalog.site.name} instagram={catalog.site.instagram} />
     </main>
   );
 }

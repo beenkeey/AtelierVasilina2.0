@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Outfit } from "next/font/google";
+import { catalog } from "@/lib/site-data";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -15,9 +16,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Atelier Vasilina — ручная роспись и вышивка",
-  description:
-    "Авторские футболки, кофты и вещи с росписью, вышивкой и кастомом. Закажи уникальную работу ручной работы.",
+  title: `${catalog.site.name} — ${catalog.site.tagline}`,
+  description: catalog.site.tagline,
 };
 
 export default function RootLayout({

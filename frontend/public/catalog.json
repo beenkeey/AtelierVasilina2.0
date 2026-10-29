@@ -1,0 +1,122 @@
+{
+  "site": {
+    "name": "VoiceOfSilencE",
+    "tagline": "Картины на рамах, роспись и вышивка — каждая вещь единственная",
+    "telegram": "https://t.me/VoiceOFsilencE_0",
+    "instagram": "https://www.instagram.com/muchkinavasilina?mdxt=cHZtb3NheDBvbzlo"
+  },
+  "works": [
+    {
+      "id": "futbolka-osminog-slukhi",
+      "title": "Футболка «Слухи»",
+      "description": "Роспись акрилом: осьминог и надпись на чёрной футболке.",
+      "category": "wearable",
+      "price": null,
+      "featured": true,
+      "image": "/works/futbolka-osminog-slukhi.jpg",
+      "available": true
+    },
+    {
+      "id": "vyshivka-lyubov",
+      "title": "Вышивка «Любовь»",
+      "description": "Объёмная вышивка с градиентом от розового к синему.",
+      "category": "embroidery",
+      "price": null,
+      "featured": true,
+      "image": "/works/vyshivka-lyubov.jpg",
+      "available": true
+    },
+    {
+      "id": "kartina-redflags-prazdnik",
+      "title": "«Гирлянда из редфлагов»",
+      "description": "Авторская работа маркерами на холсте — ироничный праздничный сюжет.",
+      "category": "painting",
+      "price": null,
+      "featured": false,
+      "image": "/works/kartina-redflags-prazdnik.jpg",
+      "available": true,
+      "medium": "marker"
+    },
+    {
+      "id": "futbolka-abyuzer",
+      "title": "Футболка «Абьюзер»",
+      "description": "Объёмные буквы с градиентом на голубой футболке.",
+      "category": "wearable",
+      "price": null,
+      "featured": true,
+      "image": "/works/futbolka-abyuzer.png",
+      "available": true
+    },
+    {
+      "id": "tolstovka-marina-carica",
+      "title": "Толстовка «Марина / Царица»",
+      "description": "Роспись и граффити-надпись на розовой толстовке.",
+      "category": "custom",
+      "price": null,
+      "featured": false,
+      "image": "/works/tolstovka-marina-carica.jpg",
+      "available": true
+    },
+    {
+      "id": "tolstovka-koty-future",
+      "title": "«The future is hidden»",
+      "description": "Роспись на мятной толстовке: коты, цветы и акценты.",
+      "category": "wearable",
+      "price": null,
+      "featured": true,
+      "image": "/works/tolstovka-koty-future.jpg",
+      "available": true
+    },
+    {
+      "id": "futbolka-stitch-deadpool",
+      "title": "Футболка Stitch × Deadpool",
+      "description": "Роспись маркерами/акрилом на чёрной футболке.",
+      "category": "wearable",
+      "price": null,
+      "featured": false,
+      "image": "/works/futbolka-stitch-deadpool.jpg",
+      "available": true
+    },
+    {
+      "id": "vyshivka-derevo-zhizn",
+      "title": "«Вся жизнь как дерево до снега»",
+      "description": "Вышивка на чёрной ткани — дерево и строки стихов.",
+      "category": "embroidery",
+      "price": null,
+      "featured": true,
+      "image": "/works/vyshivka-derevo-zhizn.jpg",
+      "available": true
+    },
+    {
+      "id": "kartina-vyzhivalschik",
+      "title": "«Выживальщик»",
+      "description": "Рисунок акрилом и маркерами — авторская иллюстрация на бумаге/холсте.",
+      "category": "painting",
+      "price": null,
+      "featured": true,
+      "image": "/works/kartina-vyzhivalschik.jpg",
+      "available": true,
+      "medium": "mixed"
+    },
+    {
+      "id": "vyshivka-stih-pro-pitie",
+      "title": "Вышивка — авторский стих",
+      "description": "Ручная вышивка текста на белой ткани.",
+      "category": "embroidery",
+      "price": null,
+      "featured": false,
+      "image": "/works/vyshivka-stih-pro-pitie.jpg",
+      "available": true
+    },
+    {
+      "id": "futbolka-volki-neon",
+      "title": "«Мои танцы» — неоновые волки",
+      "description": "Роспись на чёрной ткани: волки и кислотные акценты.",
+      "category": "custom",
+      "price": null,
+      "featured": true,
+      "image": "/works/futbolka-volki-neon.jpg",
+      "available": true
+    }
+  ]
+}

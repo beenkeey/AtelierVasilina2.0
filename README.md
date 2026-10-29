@@ -1,44 +1,53 @@
-# Atelier Vasilina
+# VoiceOfSilencE — визитка для GitHub Pages
 
-Сайт-портfolio и заказов для ручной росписи, вышивки и кастома одежды.
+Одностраничный сайт: витрина картин (на рамах), одежды с росписью/вышивкой, заказ через **Telegram**.
 
-## Возможности
+## Как это устроено
 
-- Красивая главная с анимациями (Framer Motion), галерея работ, форма заказа
-- Админка `/admin`: загрузка фото → **автоматическое удаление фона** (rembg) → PNG на сайте
-- API на FastAPI, SQLite, хранение заявок
+| Было (сервер) | Стало (под Instagram / GitHub Pages) |
+|---------------|--------------------------------------|
+| FastAPI + админка | Статический сайт, каталог в JSON |
+| Форма заказа на сайте | Кнопка → Telegram с готовым текстом |
+| rembg на сервере | Скрипт `tools/prepare_work.py` на твоём ПК |
 
-## Быстрый старт
+Подробнее про Telegram: [docs/TELEGRAM.md](docs/TELEGRAM.md)
 
-### 1. Backend
-
-```powershell
-cd backend
-copy .env.example .env
-..\.venv\Scripts\pip install -r requirements.txt
-..\.venv\Scripts\uvicorn main:app --reload --port 8000
-```
-
-Пароль админки по умолчанию: `vasilina` (меняется в `backend/.env` → `ADMIN_PASSWORD`).
-
-При первой загрузке с удалением фона rembg скачает модель (~170 МБ).
-
-### 2. Frontend
+## Локально
 
 ```powershell
 cd frontend
-npm install framer-motion
+copy .env.local.example .env.local
+# пропиши NEXT_PUBLIC_TELEGRAM=username_без_@
+npm install
 npm run dev
 ```
 
-Открой [http://localhost:3000](http://localhost:3000). Админка: [http://localhost:3000/admin](http://localhost:3000/admin).
+## Добавить работу
 
-## Структура
+1. Сфотографируй (для одежды — однотонный фон).
+2. На ПК (нужен `.venv` с `rembg`, как в `backend/requirements.txt`):
 
-- `backend/` — API, обработка изображений, база
-- `frontend/` — Next.js 15, Tailwind 4
+```powershell
+.\.venv\Scripts\python tools\prepare_work.py путь\к\фото.jpg --title "Название" --category painting --medium pastel --price 4500 --featured
+```
 
-## Советы по фото
+Категории: `painting`, `wearable`, `embroidery`, `custom`.  
+Для картин — `--medium acrylic|pastel|marker|ink|pencil|mixed`.
 
-- Снимай вещь на однотонном фоне (белый/серый) — rembg работает точнее
-- Если фон сложный, сними галочку «Убрать фон» и обработай вручную в PNG
+3. Проверь `frontend/public/catalog.json` и `frontend/public/works/`.
+4. Закоммить и push → GitHub Pages обновится.
+
+## GitHub Pages
+
+1. Репозиторий на GitHub → **Settings → Pages → Build and deployment → GitHub Actions**.
+2. В **Settings → Secrets and variables → Actions → Variables** добавь `TELEGRAM_USERNAME` (опционально, для CI).
+3. Push в `main` — workflow `.github/workflows/pages.yml` соберёт сайт.
+
+URL: `https://<user>.github.io/<repo>/`
+
+## Папки
+
+- `frontend/` — сайт (Next.js static export)
+- `tools/prepare_work.py` — подготовка фото и каталога
+- `backend/` — старый API (не нужен для Pages; можно использовать только зависимости для rembg)
+- `docs/TELEGRAM.md` — бот vs простые ссылки

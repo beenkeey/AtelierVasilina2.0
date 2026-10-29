@@ -10,7 +10,11 @@ const links = [
   { href: "#order", label: "Заказать" },
 ];
 
-export function Header() {
+type Props = {
+  siteName: string;
+};
+
+export function Header({ siteName }: Props) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -27,7 +31,7 @@ export function Header() {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${
         scrolled
-          ? "border-b border-espresso/5 bg-cream/80 py-3 shadow-sm backdrop-blur-xl"
+          ? "border-b border-snow/10 bg-charcoal/90 py-3 shadow-lg shadow-black/40 backdrop-blur-xl"
           : "bg-transparent py-5"
       }`}
     >
@@ -36,7 +40,7 @@ export function Header() {
           href="/"
           className="font-serif text-2xl font-semibold tracking-tight text-espresso md:text-3xl"
         >
-          Atelier <span className="text-rose">Vasilina</span>
+          <span className="text-rose">{siteName}</span>
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
@@ -51,7 +55,7 @@ export function Header() {
         </nav>
         <a
           href="#order"
-          className="rounded-full bg-espresso px-4 py-2 text-xs font-medium tracking-wide text-cream transition hover:bg-rose md:px-5 md:py-2.5 md:text-sm"
+          className="rounded-full bg-wine px-4 py-2 text-xs font-medium tracking-wide text-snow transition hover:bg-rose md:px-5 md:py-2.5 md:text-sm"
         >
           Связаться
         </a>

@@ -1,15 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #faf6f0;
-  --cream-deep: #f0e8dc;
-  --espresso: #2c1810;
-  --rose: #c97b6d;
-  --rose-light: #e8b4a8;
-  --sage: #8a9a7b;
-  --gold: #c4a574;
-  --background: var(--cream);
-  --foreground: var(--espresso);
+  /* Тёмная база */
+  --void: #080708;
+  --charcoal: #121014;
+  --charcoal-deep: #1a1619;
+  --slate: #2a2529;
+  --mist: #9a9198;
+  --snow: #f3eef1;
+
+  /* Акценты: вино, бордо */
+  --wine: #7a2038;
+  --wine-bright: #c23d5a;
+  --wine-glow: #4a1528;
+  --gold: #a88862;
+
+  /* Имена для Tailwind (исторические классы) */
+  --cream: var(--charcoal);
+  --cream-deep: var(--charcoal-deep);
+  --espresso: var(--snow);
+  --rose: var(--wine-bright);
+  --rose-light: var(--wine-glow);
+  --sage: var(--mist);
+
+  --background: var(--void);
+  --foreground: var(--snow);
 }
 
 @theme inline {
@@ -22,6 +37,10 @@
   --color-rose-light: var(--rose-light);
   --color-sage: var(--sage);
   --color-gold: var(--gold);
+  --color-wine: var(--wine);
+  --color-charcoal: var(--charcoal);
+  --color-slate: var(--slate);
+  --color-snow: var(--snow);
   --font-serif: var(--font-cormorant);
   --font-sans: var(--font-outfit);
 }
@@ -38,7 +57,8 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--rose) 35%, white);
+  background: color-mix(in srgb, var(--wine-bright) 45%, var(--void));
+  color: var(--snow);
 }
 
 .grain {
@@ -46,14 +66,15 @@ body {
   position: fixed;
   inset: 0;
   z-index: 50;
-  opacity: 0.04;
+  opacity: 0.06;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .product-stage {
   background:
-    radial-gradient(ellipse 80% 60% at 50% 100%, color-mix(in srgb, var(--rose-light) 45%, transparent), transparent),
-    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--cream-deep) 80%, white) 100%);
+    radial-gradient(ellipse 80% 60% at 50% 100%, color-mix(in srgb, var(--wine) 22%, transparent), transparent),
+    linear-gradient(165deg, var(--charcoal-deep) 0%, var(--charcoal-deep) 45%, var(--charcoal) 100%);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--snow) 5%, transparent);
 }
 
 @keyframes float-y {
