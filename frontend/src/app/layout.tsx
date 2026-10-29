@@ -28,7 +28,6 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${cormorant.variable} ${outfit.variable} antialiased`}>
-        <div className="grain" aria-hidden />
         {children}
       </body>
     </html>
